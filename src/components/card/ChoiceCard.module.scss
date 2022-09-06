@@ -1,0 +1,33 @@
+// back: 問題文表記
+// front: 正誤表記
+
+.card {
+  position: relative;
+  padding-top: calc(100% + 65px);
+
+  .back,
+  .front {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+  }
+
+  .front {
+    transform: rotateY(-180deg);
+  }
+
+  /* クリック時のカード裏面 問題文記載 */
+  &.cardClicked .back {
+    transition: all 1s ease-in-out;
+    transform: rotateY(180deg);
+  }
+
+  /* クリック時のカード表面 正解不正解記載　*/
+  &.cardClicked .front {
+    transition: all 1s ease-in-out;
+    transform: rotateY(0);
+  }
+}

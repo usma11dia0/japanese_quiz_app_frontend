@@ -1,0 +1,30 @@
+@use "../../../src/scss/variables" as var;
+
+.progBar {
+  width: 250px;
+  height: 30px;
+  margin-bottom: 10px;
+  background-color: #ececec;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+
+  & .bar {
+    position: absolute;
+    margin: 0;
+    height: 100%;
+    background-color: var.$cJPYellow;
+    // #ffca28
+    animation: progress 3s linear normal;
+    // animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+}
+@keyframes progress {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}

@@ -1,0 +1,33 @@
+@use "../../../scss/variables" as var;
+
+.table {
+  table-layout: fixed;
+}
+
+.button {
+  margin: 24px;
+}
+
+.resultlist__icon {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  margin-top: 10px;
+  color: dimgray;
+}
+
+.resultlist__hover {
+  cursor: pointer;
+}
+
+.correct_char {
+  font-weight: bold;
+  color: var.$cJPRed;
+}
+
+.incorrect_char {
+  font-weight: bold;
+  color: var.$cJPBlue;
+}

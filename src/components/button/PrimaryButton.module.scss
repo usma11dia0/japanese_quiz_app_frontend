@@ -1,0 +1,30 @@
+@use "../../scss/variables" as var;
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1em 2em;
+  width: 300px;
+  color: var.$cWhite;
+  font-size: 18px;
+  font-weight: 300;
+  background-color: var.$cJPBrown;
+  transition: 0.3s;
+
+  &::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-top: 3px solid var.$cWhite;
+    border-right: 3px solid var.$cWhite;
+    transform: rotate(45deg);
+  }
+
+  &:hover {
+    text-decoration: none;
+    background-color: var.$cJPBrown_light;
+    cursor: pointer;
+  }
+}

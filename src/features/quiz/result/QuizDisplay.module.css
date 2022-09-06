@@ -1,0 +1,15 @@
+.table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table_head {
+  -ms-writing-mode: tb-rl;
+      writing-mode: vertical-rl;
+  width: 15%;
+}
+
+.img {
+  width: 20vh;
+  height: 20vh;
+}/*# sourceMappingURL=QuizDisplay.module.css.map */

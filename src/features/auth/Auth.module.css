@@ -1,0 +1,29 @@
+.auth__root {
+  font-family: serif;
+  color: #3f312b;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 85px;
+}
+.auth__root > span {
+  cursor: pointer;
+}
+.auth__root > span:hover {
+  background: linear-gradient(transparent 80%, #8d6e63 99%);
+}
+
+@media only screen and (max-width: 480px) {
+  .Toastify__toast-container {
+    padding: 12px;
+  }
+}
+:root {
+  --toastify-toast-width: 420px;
+}
+
+.span {
+  font-weight: bold;
+}/*# sourceMappingURL=Auth.module.css.map */

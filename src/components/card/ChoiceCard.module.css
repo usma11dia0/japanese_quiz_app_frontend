@@ -1,0 +1,28 @@
+@charset "UTF-8";
+.card {
+  position: relative;
+  padding-top: calc(100% + 65px);
+  /* クリック時のカード裏面 問題文記載 */
+  /* クリック時のカード表面 正解不正解記載　*/
+}
+.card .back,
+.card .front {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.card .front {
+  transform: rotateY(-180deg);
+}
+.card.cardClicked .back {
+  transition: all 1s ease-in-out;
+  transform: rotateY(180deg);
+}
+.card.cardClicked .front {
+  transition: all 1s ease-in-out;
+  transform: rotateY(0);
+}/*# sourceMappingURL=ChoiceCard.module.css.map */

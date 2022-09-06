@@ -1,0 +1,29 @@
+@use "../../../src/scss/variables" as var;
+
+.volumeUpIcon {
+  margin-top: 10px;
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 16%);
+  transition: background-color cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s;
+
+  &:hover {
+    display: block;
+    transition: opacity linear 0.4s;
+    animation: pulseMotion 1s linear infinite;
+  }
+}
+
+@keyframes pulseMotion {
+  0% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1.2, 1.2);
+  }
+}
