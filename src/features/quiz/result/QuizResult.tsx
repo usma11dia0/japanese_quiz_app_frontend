@@ -84,9 +84,7 @@ export const QuizResult = () => {
 
   return (
     <>
-      <Button onClick={handleOpen} className="open-modal">
-        Open QuizResult Modal
-      </Button>
+      <Button onClick={handleOpen} className="open-modal" />
       <Modal
         open={open}
         aria-labelledby="modal-modal-title"
