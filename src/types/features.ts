@@ -32,6 +32,8 @@ export interface AUTH_STATE {
 }
 export interface ValidationErrors {
   detail: string;
+  username: string[];
+  password: string[];
 }
 
 /* quizSlice.tsx */

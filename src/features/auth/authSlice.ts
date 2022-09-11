@@ -35,9 +35,12 @@ export const fetchAsyncLogin = createAsyncThunk<
   }
 });
 
-export const fetchAsyncRegister = createAsyncThunk(
-  "auth/register",
-  async (auth: CRED) => {
+export const fetchAsyncRegister = createAsyncThunk<
+  USER,
+  CRED,
+  { rejectValue: ValidationErrors }
+>("auth/register", async (auth: CRED, { rejectWithValue }) => {
+  try {
     const res = await axios.post<USER>(
       `${process.env.REACT_APP_API_URL}/api/create/`,
       auth,
@@ -48,8 +51,14 @@ export const fetchAsyncRegister = createAsyncThunk(
       }
     );
     return res.data;
+  } catch (err: any) {
+    let error: AxiosError<ValidationErrors> = err;
+    if (!error.response) {
+      throw err;
+    }
+    return rejectWithValue(error.response.data);
   }
-);
+});
 
 export const fetchAsyncGetMyProf = createAsyncThunk(
   "auth/loginuser",
@@ -96,6 +105,13 @@ export const authSlice = createSlice({
         state.error = action.payload.detail;
       } else {
         state.error = action.error.message;
+      }
+    });
+    builder.addCase(fetchAsyncRegister.rejected, (state, action) => {
+      if (action.payload?.username) {
+        state.error = action.payload.username[0];
+      } else {
+        state.error = action.payload?.password[0];
       }
     });
     builder.addCase(

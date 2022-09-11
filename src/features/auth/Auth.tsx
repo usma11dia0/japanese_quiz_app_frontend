@@ -18,6 +18,7 @@ export const Auth: FC = () => {
   const isLoginView = useSelector(selectIsLoginView);
   const [isInputError, setIsInputError] = useState(false);
   const [isUserNameError, setIsUserNameError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string>();
   const username = useRef<HTMLInputElement>(null);
   const password1 = useRef<HTMLInputElement>(null);
   const password2 = useRef<HTMLInputElement>(null);
@@ -51,6 +52,7 @@ export const Auth: FC = () => {
         // } else {
         //   setErrorMessage(`${resultAction.error}`);
         // }
+        // toast内記載用 `${setErrorMessage(`${result.payload}`)}`
       }
     } else {
       if (password1.current!.value !== password2.current!.value) {
@@ -72,6 +74,19 @@ export const Auth: FC = () => {
         const result = await dispatch(fetchAsyncRegister(credential));
         if (fetchAsyncRegister.fulfilled.match(result)) {
           await dispatch(fetchAsyncLogin(credential));
+        } else {
+          if (result.payload) {
+            setErrorMessage(result.payload.username[0]);
+            toast.error(`${errorMessage}`, {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
         }
       }
     }
