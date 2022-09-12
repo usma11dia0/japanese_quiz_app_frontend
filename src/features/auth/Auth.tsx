@@ -18,7 +18,6 @@ export const Auth: FC = () => {
   const isLoginView = useSelector(selectIsLoginView);
   const [isInputError, setIsInputError] = useState(false);
   const [isUserNameError, setIsUserNameError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string>();
   const username = useRef<HTMLInputElement>(null);
   const password1 = useRef<HTMLInputElement>(null);
   const password2 = useRef<HTMLInputElement>(null);
@@ -76,8 +75,7 @@ export const Auth: FC = () => {
           await dispatch(fetchAsyncLogin(credential));
         } else {
           if (result.payload) {
-            setErrorMessage(result.payload.username[0]);
-            toast.error(`${errorMessage}`, {
+            toast.error(`${result.payload.username[0]}`, {
               position: "top-center",
               autoClose: 5000,
               hideProgressBar: false,
