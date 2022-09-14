@@ -102,7 +102,7 @@ export const QuizResult = () => {
             border: "2px solid #000",
             boxShadow: 24,
             overflowWrap: "break-word",
-            p: 2,
+            p: 1,
           }}
         >
           <Grid container spacing={2}>
@@ -112,7 +112,7 @@ export const QuizResult = () => {
                 variant="h4"
                 fontWeight="bold"
                 component="h1"
-                sx={{ display: "inline-flex", mt: 2, ml: 3 }}
+                sx={{ display: "inline-flex", mt: 0, ml: 3 }}
               >
                 今 回 の 成 績
               </Typography>
@@ -122,7 +122,7 @@ export const QuizResult = () => {
                 fontWeight="bold"
                 component="h1"
                 color={score === 5 ? "#ba2636" : "#3f312b"}
-                sx={{ display: "inline-flex", mt: 2, ml: 5 }}
+                sx={{ display: "inline-flex", mt: 0, ml: 5 }}
               >
                 {score === 5 ? `満 点` : `${score} 点`}
               </Typography>
@@ -138,7 +138,7 @@ export const QuizResult = () => {
               >
                 戻る
               </Button>
-              <Table size="medium" className={styles.table} sx={{ mt: 6 }}>
+              <Table size="medium" className={styles.table} sx={{ mt: 3 }}>
                 <TableHead>
                   <TableRow>
                     {columns.map(
@@ -219,7 +219,7 @@ export const QuizResult = () => {
                 </TableBody>
               </Table>
             </Grid>
-            <Grid item xs={4} mt={2.3} ml={3}>
+            <Grid item xs={4} mt={-1.5} ml={3}>
               <QuizDisplay />
             </Grid>
           </Grid>

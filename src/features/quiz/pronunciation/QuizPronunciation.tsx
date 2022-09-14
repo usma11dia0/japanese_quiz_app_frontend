@@ -117,10 +117,10 @@ export const QuizPronunciation = () => {
 
   return (
     <>
-      <Typography variant="h5" fontWeight="bold" mt={0.5}>
+      <Typography variant="h5" fontWeight="bold" mt={-1.2}>
         問. {answerChoice.choice_text}と正しく発音してください。
       </Typography>
-      <Typography variant="h6" mt={2.0} mb={1.0}>
+      <Typography variant="h6" mt={0} mb={0}>
         {resultPronunciation.isJudging
           ? "判定中"
           : status === "recording"
@@ -155,7 +155,7 @@ export const QuizPronunciation = () => {
       </Grid>
       <Grid container sx={{ width: "auto" }}>
         <ChoiceCard
-          customSx={{ mt: 2, width: "20rem", alignItems: "center" }}
+          customSx={{ mt: 0.5, width: "20rem", alignItems: "center" }}
           imgSrc={answerChoice.quiz !== "" ? answerChoice.image_choice_src : ""}
           isCorrect={isCorrect}
           isClicked={resultPronunciation.result !== "" ? true : undefined}
