@@ -100,8 +100,15 @@ export const QuizQuestion = () => {
         case "":
           //クリックの対象がChoiceCardの画像だった場合
           if (e.target instanceof HTMLImageElement) {
+            // SSL対策 デプロイ時にhttp→https変換されるため//以降を取得
+            const targetIndex = e.target.currentSrc.indexOf("//");
+            const answerChoiceIndex =
+              selectedAnswerChoice?.image_choice_src.indexOf("//");
             if (
-              e.target.currentSrc === selectedAnswerChoice?.image_choice_src
+              e.target.currentSrc.substring(targetIndex) ===
+              selectedAnswerChoice?.image_choice_src.substring(
+                answerChoiceIndex
+              )
             ) {
               // "正解"の場合
               setIsCorrect(true);
