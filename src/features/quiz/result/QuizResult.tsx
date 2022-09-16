@@ -96,17 +96,17 @@ export const QuizResult = () => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: "150vh",
+            width: "160vh",
             height: "90vh",
             bgcolor: "background.paper",
             border: "2px solid #000",
             boxShadow: 24,
             overflowWrap: "break-word",
-            p: 1,
+            p: 3,
           }}
         >
           <Grid container spacing={2}>
-            <Grid item xs={7}>
+            <Grid item xs={7.5}>
               <Typography
                 id="modal-modal-title"
                 variant="h4"
@@ -122,7 +122,7 @@ export const QuizResult = () => {
                 fontWeight="bold"
                 component="h1"
                 color={score === 5 ? "#ba2636" : "#3f312b"}
-                sx={{ display: "inline-flex", mt: 0, ml: 5 }}
+                sx={{ display: "inline-flex", mt: "2vh", ml: 5 }}
               >
                 {score === 5 ? `満 点` : `${score} 点`}
               </Typography>
@@ -138,7 +138,7 @@ export const QuizResult = () => {
               >
                 戻る
               </Button>
-              <Table size="medium" className={styles.table} sx={{ mt: 3 }}>
+              <Table size="medium" className={styles.table} sx={{ mt: "4vh" }}>
                 <TableHead>
                   <TableRow>
                     {columns.map(
@@ -219,7 +219,7 @@ export const QuizResult = () => {
                 </TableBody>
               </Table>
             </Grid>
-            <Grid item xs={4} mt={-1.5} ml={3}>
+            <Grid item xs={4.3} mt="-0.8vh" ml={1}>
               <QuizDisplay />
             </Grid>
           </Grid>
