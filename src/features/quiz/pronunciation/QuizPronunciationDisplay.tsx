@@ -65,13 +65,13 @@ export const QuizPronunciationDisplay = (props: Props) => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: "80vh",
+            width: "100vh",
             height: "95vh",
             bgcolor: "background.paper",
             border: "2px solid #000",
             boxShadow: 24,
             overflowWrap: "break-word",
-            p: 3,
+            p: 5,
           }}
         >
           <Grid
@@ -123,12 +123,12 @@ export const QuizPronunciationDisplay = (props: Props) => {
               fontWeight="bold"
               component="h1"
               color={"#3f312b"}
-              sx={{ mt: 3, ml: 5 }}
+              sx={{ mt: "5vh", ml: 5 }}
             >
               {`${parseFloat(resultPronunciation.proba.toFixed(2))} %`}
             </Typography>
           </Grid>
-          <Table className={styles.table} sx={{ mt: 1 }}>
+          <Table className={styles.table} sx={{ mt: "3vh" }}>
             <TableBody>
               {rows.map((row) => (
                 <TableRow key={row.item}>
@@ -192,7 +192,7 @@ export const QuizPronunciationDisplay = (props: Props) => {
                 // store内のRedux stateをリセット
                 window.location.reload();
               }}
-              sx={{ top: "0.5rem" }}
+              sx={{ top: "1.8rem" }}
             >
               <Typography>再挑戦</Typography>
             </Button>
@@ -204,7 +204,7 @@ export const QuizPronunciationDisplay = (props: Props) => {
                 // store内のRedux stateをリセット
                 dispatch(resetState());
               }}
-              sx={{ top: "0.5rem" }}
+              sx={{ top: "1.8rem" }}
             >
               <Typography>戻る</Typography>
             </Button>

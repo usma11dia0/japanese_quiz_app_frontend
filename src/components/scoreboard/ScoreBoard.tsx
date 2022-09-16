@@ -9,7 +9,7 @@ export const ScoreBoard: FC<SCOREBOARD_PROPS> = memo((props) => {
   return (
     <Container
       maxWidth="sm"
-      sx={{ display: "flex", justifyContent: "center", marginTop: "-5px" }}
+      sx={{ display: "flex", justifyContent: "center", marginTop: "1vh" }}
     >
       <div className={styles.wrapper}>
         <div className={styles.scorebox}>
