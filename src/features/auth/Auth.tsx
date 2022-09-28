@@ -12,6 +12,7 @@ import {
   fetchAsyncRegister,
   selectIsLoginView,
 } from "./authSlice";
+import { CRED } from "../../types/features";
 
 export const Auth: FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -22,13 +23,18 @@ export const Auth: FC = () => {
   const password1 = useRef<HTMLInputElement>(null);
   const password2 = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: FormEvent<HTMLFormElement>, cred?: CRED) => {
+    if (e !== undefined) e.preventDefault();
     if (isLoginView) {
-      const credential = {
-        username: username.current!.value,
-        password: password1.current!.value,
-      };
+      let credential;
+      if (cred !== undefined) {
+        credential = cred;
+      } else {
+        credential = {
+          username: username.current!.value,
+          password: password1.current!.value,
+        };
+      }
       const resultAction = await dispatch(fetchAsyncLogin(credential));
       if (!fetchAsyncLogin.fulfilled.match(resultAction)) {
         setIsInputError(!isInputError);
@@ -88,6 +94,13 @@ export const Auth: FC = () => {
         }
       }
     }
+  };
+
+  const loginAsGuest = () => {
+    handleSubmit(undefined, {
+      username: process.env.REACT_APP_GUEST_USER!,
+      password: process.env.REACT_APP_GUEST_PASSWORD!,
+    });
   };
 
   return (
@@ -191,6 +204,30 @@ export const Auth: FC = () => {
           {isLoginView ? "ろぐいん" : "とうろく"}
         </Button>
       </form>
+      {isLoginView ? (
+        <Button
+          id="send-login"
+          variant="contained"
+          type="submit"
+          color="primary"
+          size="medium"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            y: 3,
+            m: "auto",
+            mt: 2,
+            mb: 2,
+          }}
+          onClick={() => {
+            loginAsGuest();
+          }}
+        >
+          ゆーざー登録無しでろぐいん
+        </Button>
+      ) : (
+        ""
+      )}
       <br />
       <span onClick={() => dispatch(toggleMode())} className={styles.span}>
         {isLoginView ? "はじめての方はこちら" : "ろぐいんはこちら"}
